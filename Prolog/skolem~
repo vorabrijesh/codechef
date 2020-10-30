@@ -1,0 +1,10 @@
+philo(a).
+philo(b).
+philo(c).
+book(g(a)).
+write(a,g(a)).
+
+not(X) :-
+
+
+test(X) :- not(philo(X))
