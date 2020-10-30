@@ -1,1 +1,1 @@
-# codechef
+# competitive programming codes.
