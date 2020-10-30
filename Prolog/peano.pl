@@ -1,0 +1,2 @@
+sum(zero,S1,S1).
+sum(s(X),S1, s(S2)) :- sum(X,S1,S2).

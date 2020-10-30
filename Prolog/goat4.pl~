@@ -1,0 +1,48 @@
+move([left,left,G,C],lion_lr,[right,right,G,C]).
+move([left,L,left,C],goat_lr,[right,L,right,C]).
+move([left,L,G,left],cabbage_lr,[right,L,G,right]).
+move([left,L,G,C],man_lr,[right,L,G,C]).
+
+move([right,right,G,C],lion_rl,[left,left,G,C]).
+move([right,L,right,C],goat_rl,[left,L,left,C]).
+move([right,L,G,right],cabbage_rl,[left,L,G,left]).
+move([right,L,G,C],man_rl,[left,L,G,C]).
+
+not(P) :-
+    P,!,fail
+    ;
+    true.
+
+% Lion and goat are alone
+unsafe([right,left,left,_]).
+unsafe([left,right,right,_]).
+
+% Goat and cabbage are alone
+unsafe([left,_,right,right]).
+unsafe([right,_,left,left]).
+
+iscontinue(X) :-
+    X = [right,right,right,right],!,fail
+    ;
+    true.
+
+isstop(X) :-
+    X = [right,right,right,right]
+    .
+
+solution([right,right,right,right],[]).
+
+solution(S1,[FirstAction|RemainingActions]) :-
+    move(S1,FirstAction,S2),
+    not(unsafe(S2)),
+    solution(S2,RemainingActions).
+
+
+length([],0).
+length([_|Tail],N) :-
+    length(Tail,N1),
+    N is N1 + 1.
+
+
+
+
